@@ -3,6 +3,7 @@ import numpy as np
 from tabulate import tabulate
 from matplotlib.widgets import Slider, Button, TextBox
 
+
 # there's like zero dcumentation in this thing
 # I'll try to add some at a later time (i.e. not midnight)
 # values seem to match up pretty well with JDA example
@@ -280,6 +281,8 @@ def designNozzleMoC(desMach, theta0, lines, gamma, axs = None, verbose = False):
     points = [[0],[1]] # throat is located at (0, 1)
 
     # find position of first point (centerline), this is just the mu angle of the characteristic
+    print(tabulate(nodes))
+
     y3 = 0
     x3 = (points[1][0]-y3) / np.tan(nodes[0][6] - nodes[0][3])
     points[0].append(x3)
@@ -350,6 +353,7 @@ def designNozzleMoC(desMach, theta0, lines, gamma, axs = None, verbose = False):
         points[0].append(x3)
         points[1].append(y3)
         linesrem -= 1
+    print(tabulate(points))
 
     # plot the locations of the grid points if given axes
     if axs != None:
